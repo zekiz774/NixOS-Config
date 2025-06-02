@@ -24,23 +24,32 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    nvf,
-    zen-browser,
     nur,
+    hyprland,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
-        # your regular system config
         {
-          nixpkgs.overlays = [nur.overlays.default];
+          nixpkgs.overlays = [
+            nur.overlays.default
+            hyprland.overlays.default
+          ];
         }
+        # your regular system config
         ./configuration.nix
         # bring Home-Manager in as a NixOS module
         home-manager.nixosModules.home-manager

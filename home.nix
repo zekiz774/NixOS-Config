@@ -188,7 +188,6 @@
         "browser.startup.page" = 0; # 0 = blank page, 1 = homepage, 3 = restore previous session
         "browser.sessionstore.resume_from_crash" = false;
         "browser.sessionstore.resume_session_once" = false;
-        "zen.widget.linux.transparency" = true;
       };
     };
   };
@@ -197,6 +196,7 @@
     enable = true;
     extraConfig = {
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
   };
 }
