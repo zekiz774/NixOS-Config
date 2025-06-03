@@ -5,4 +5,5 @@ git
 kitty
 fish
 zoxide
+home-manager
 ]

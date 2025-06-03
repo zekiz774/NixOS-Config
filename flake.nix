@@ -39,40 +39,35 @@
     nur,
     hyprland,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    system = "x86_64-linux";
+
+    # Create a consistent pkgs set with all overlays applied
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        nur.overlays.default
+        hyprland.overlays.default
+      ];
+      config.allowUnfree = true;
+    };
+  in {
+    # system configuration
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
+      pkgs = pkgs;
       specialArgs = {inherit inputs;};
       modules = [
-        {
-          nixpkgs.overlays = [
-            nur.overlays.default
-            hyprland.overlays.default
-          ];
-        }
-        # your regular system config
         ./configuration.nix
-        # bring Home-Manager in as a NixOS module
-        home-manager.nixosModules.home-manager
+      ];
+    };
 
-        # —–––––––– Home-Manager settings ––––––––
-        {
-          # use the same pkgs for system + user
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "HMBackup";
-
-          home-manager.users.zekiz = {
-            imports = [
-              ./home.nix
-            ];
-          };
-
-          home-manager.extraSpecialArgs = {
-            inherit inputs; # lets you use `inputs.nvf` etc. in home.nix
-            system = "x86_64-linux"; # often handy to have
-          };
-        }
+    # home configuration
+    homeConfigurations.nixos = home-manager.lib.homeManagerConfiguration {
+      pkgs = pkgs;
+      extraSpecialArgs = {inherit inputs;};
+      modules = [
+        ./home.nix
       ];
     };
   };
