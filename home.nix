@@ -146,6 +146,10 @@
         name = "grc";
         src = pkgs.fishPlugins.grc.src;
       }
+      {
+        name = "git";
+        src = pkgs.fishPlugins.plugin-git.src;
+      }
     ];
   };
   programs.zoxide.enable = true;
@@ -193,6 +197,7 @@
         "browser.sessionstore.resume_session_once" = false;
         "browser.tabs.allow_transparent_browser" = true;
         "zen.widget.linux.transparency" = true;
+        "zen.view.compact.hide-toolbar" = true;
       };
     };
   };

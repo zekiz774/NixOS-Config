@@ -8,7 +8,7 @@
         "$menu" = "rofi --show drun";
 
         kb_layout = "us,de";
-        kb_options = "grp:alt_shift_toggle";
+        kb_options = "grp:alt_space_toggle";
 
         follow_mouse = 1;
 
@@ -25,7 +25,7 @@
       exec-once = [
         "waybar"
       ];
-      monitor = ",preferred,auto,auto";
+      monitor = ["eDP-1,1920x1080@60.02,auto,1.2" "DP-3,1920x1080@144.00,auto,auto"];
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,23"
