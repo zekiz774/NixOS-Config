@@ -22,6 +22,8 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     inputs.nvf.homeManagerModules.default
+
+    ./hyprland.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -33,6 +35,7 @@
     pkgs.vesktop
     pkgs.obsidian
     pkgs.grc
+    pkgs.rofi-wayland
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -188,6 +191,8 @@
         "browser.startup.page" = 0; # 0 = blank page, 1 = homepage, 3 = restore previous session
         "browser.sessionstore.resume_from_crash" = false;
         "browser.sessionstore.resume_session_once" = false;
+        "browser.tabs.allow_transparent_browser" = true;
+        "zen.widget.linux.transparency" = true;
       };
     };
   };
@@ -198,5 +203,15 @@
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
     };
+  };
+  programs.kitty = {
+    enable = true;
+    settings = {
+      background_opacity = 0.5;
+      confirm_os_window_close = 0;
+    };
+  };
+  programs.starship = {
+    enable = true;
   };
 }
