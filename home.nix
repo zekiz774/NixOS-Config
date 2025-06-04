@@ -35,7 +35,6 @@
     vesktop
     obsidian
     grc
-    rofi-wayland
     gcc
     ripgrep
     nodejs
@@ -43,6 +42,12 @@
     imagemagick
     ffmpeg
     yt-dlp
+    godot
+    rofi-wayland
+    btop
+    powertop
+    playerctl
+    brightnessctl
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -94,7 +99,7 @@
   #  /etc/profiles/per-user/zekiz/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = 1;
   };
 
   # Let Home Manager install and manage itself.
@@ -186,6 +191,7 @@
         packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           bitwarden
+          sponsorblock
         ];
         settings."uBlock0@raymondhill.net".settings = {
           selectedFilterLists = [
