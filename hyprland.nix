@@ -8,7 +8,7 @@
         "$menu" = "rofi -show drun";
 
         kb_layout = "us,de";
-        kb_options = "grp:alt_space_toggle";
+        kb_options = "grp:alt_space_toggle, caps:swapescape";
 
         follow_mouse = 1;
 
