@@ -28,14 +28,21 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.wl-clipboard
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.onlyoffice-bin
-    pkgs.vesktop
-    pkgs.obsidian
-    pkgs.grc
-    pkgs.rofi-wayland
+  home.packages = with pkgs; [
+    wl-clipboard
+    nerd-fonts.jetbrains-mono
+    onlyoffice-bin
+    vesktop
+    obsidian
+    grc
+    rofi-wayland
+    gcc
+    ripgrep
+    nodejs
+    nodePackages.npm
+    imagemagick
+    ffmpeg
+    yt-dlp
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -120,8 +127,11 @@
         languages = {
           enableTreesitter = true;
           enableFormat = true;
+          enableExtraDiagnostics = true;
 
-          nix.enable = true;
+          nix = {
+            enable = true;
+          };
         };
         options = {
           shiftwidth = 4;
@@ -132,6 +142,7 @@
         utility.snacks-nvim.enable = true;
         binds.whichKey.enable = true;
         utility.oil-nvim.enable = true;
+        globals.editorconfig = true;
       };
     };
   };
