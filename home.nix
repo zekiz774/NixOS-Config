@@ -48,7 +48,7 @@
     powertop
     playerctl
     brightnessctl
-
+    blender
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -137,6 +137,7 @@
           nix = {
             enable = true;
           };
+          css.enable = true;
         };
         options = {
           shiftwidth = 4;

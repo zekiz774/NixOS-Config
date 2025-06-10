@@ -173,4 +173,7 @@
       CPU_MAX_PERF_ON_BAT = 20;
     };
   };
+  # hibernate and suspend
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.powerKey = "hibernate";
 }

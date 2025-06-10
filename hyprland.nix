@@ -8,7 +8,7 @@
         "$menu" = "rofi -show drun";
 
         kb_layout = "us,de";
-        kb_options = "grp:alt_space_toggle, caps:swapescape";
+        kb_options = "grp:alt_space_toggle, caps:escape";
 
         follow_mouse = 1;
 
@@ -161,8 +161,8 @@
     settings = {
       mainBar = {
         "layer" = "top";
-        "position" = "top"; # Or "bottom", "left", "right"
-        "height" = 30; # Adjust as needed
+        "position" = "bottom"; # Or "bottom", "left", "right"
+        "height" = 40; # Adjust as needed
         "spacing" = 4; # Spacing between modules
 
         # 3. Define modules for the left, center, and right sections
@@ -176,23 +176,15 @@
           # "format" = "{name}"; # Alternative: shows workspace names if you use named workspaces
           "on-click" = "activate"; # Allows clicking to switch workspaces
           "all-outputs" = true; # Show workspaces from all monitors
-          # Optional: Define icons for your workspaces
-          # "format-icons" = {
-          #   "1" = "";
-          #   "2" = "";
-          #   "3" = "";
-          #   "focused" = "";
-          #   "default" = "";
-          #   "urgent" = "";
-          # };
         };
 
         # 5. Minimal configuration for the clock module (as an example)
         "clock" = {
           "format" = " {:%H:%M}"; # Example:  14:30
-          "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         };
       };
     };
+
+    style = builtins.readFile ./waybar.css;
   };
 }
