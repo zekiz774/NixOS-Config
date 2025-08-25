@@ -38,7 +38,6 @@
     gcc
     ripgrep
     nodejs
-    nodePackages.npm
     imagemagick
     ffmpeg
     yt-dlp
@@ -48,7 +47,22 @@
     powertop
     playerctl
     brightnessctl
-    blender
+    usbutils
+    steam-run
+    prismlauncher
+
+    #hardware utils
+    iw
+    lm_sensors
+    radeontop
+    corectrl
+    mprime
+    vulkan-tools
+
+    #desktop
+    open-webui
+    blender-hip
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -138,6 +152,8 @@
             enable = true;
           };
           css.enable = true;
+          ts.enable = true;
+          markdown.enable = true;
         };
         options = {
           shiftwidth = 4;

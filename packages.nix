@@ -1,9 +1,12 @@
-{ pkgs, ...}:
+{pkgs, ...}:
 with pkgs; [
-neovim
-git
-kitty
-fish
-zoxide
-home-manager
+  neovim
+  git
+  kitty
+  fish
+  zoxide
+  home-manager
+  clinfo
+  mangohud
+  efibootmgr
 ]
