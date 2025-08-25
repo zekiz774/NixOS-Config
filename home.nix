@@ -24,6 +24,7 @@
     inputs.nvf.homeManagerModules.default
 
     ./hyprland.nix
+    ./modules/hm-moondeck-buddy.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -261,5 +262,11 @@
         exec fish $LOGIN_OPTION
       fi
     '';
+  };
+
+  programs.moondeck-buddy = {
+    enable = true;
+    autostart = true;
+    version = "1.9.0";
   };
 }
