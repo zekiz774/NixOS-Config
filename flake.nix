@@ -58,7 +58,7 @@
       pkgs = pkgs;
       specialArgs = {inherit inputs;};
       modules = [
-        ./configuration.nix
+        ./hosts/desktop/configuration.nix
       ];
     };
 
@@ -67,7 +67,7 @@
       pkgs = pkgs;
       extraSpecialArgs = {inherit inputs;};
       modules = [
-        ./home.nix
+        ./hosts/desktop/home.nix
       ];
     };
   };

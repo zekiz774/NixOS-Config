@@ -222,4 +222,15 @@
     capSysAdmin = true;
     openFirewall = true;
   };
+
+  services.udev.extraRules = ''
+    # 8BitDo Ultimate 2 Dongle
+    KERNEL=="hidraw*", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="6012", MODE="066"
+
+    # 8BitDo Ultimate 2 BT
+    KERNEL=="hidraw*", KERNELS=="*2DC8:6012*", MODE="0660", TAG+="uaccess"
+  '';
+
+  services.udev.packages = [pkgs.via];
+  hardware.keyboard.qmk.enable = true;
 }

@@ -9,4 +9,6 @@ with pkgs; [
   clinfo
   mangohud
   efibootmgr
+  via
+  qmk
 ]

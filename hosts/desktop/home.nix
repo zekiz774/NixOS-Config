@@ -23,8 +23,8 @@
     inputs.zen-browser.homeModules.beta
     inputs.nvf.homeManagerModules.default
 
-    ./hyprland.nix
-    ./modules/hm-moondeck-buddy.nix
+    ../../modules/hm-hyprland.nix
+    ../../modules/hm-moondeck-buddy.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -51,6 +51,8 @@
     usbutils
     steam-run
     prismlauncher
+    tree
+    chromium
 
     #hardware utils
     iw
@@ -155,10 +157,6 @@
           css.enable = true;
           ts.enable = true;
           markdown.enable = true;
-        };
-        options = {
-          shiftwidth = 4;
-          tabstop = 4;
         };
 
         formatter.conform-nvim.enable = true;

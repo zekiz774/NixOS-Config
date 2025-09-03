@@ -186,6 +186,6 @@
       };
     };
 
-    style = builtins.readFile ./waybar.css;
+    style = builtins.readFile ../configs/waybar.css;
   };
 }
