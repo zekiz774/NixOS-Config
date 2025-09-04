@@ -53,6 +53,7 @@
     prismlauncher
     tree
     chromium
+    jq
 
     #hardware utils
     iw
@@ -63,7 +64,6 @@
     vulkan-tools
 
     #desktop
-    open-webui
     blender-hip
 
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -228,8 +228,8 @@
         "browser.startup.page" = 0; # 0 = blank page, 1 = homepage, 3 = restore previous session
         "browser.sessionstore.resume_from_crash" = false;
         "browser.sessionstore.resume_session_once" = false;
-        "browser.tabs.allow_transparent_browser" = true;
-        "zen.widget.linux.transparency" = true;
+        "browser.tabs.allow_transparent_browser" = false;
+        "zen.widget.linux.transparency" = false;
         "zen.view.compact.hide-toolbar" = true;
       };
     };
