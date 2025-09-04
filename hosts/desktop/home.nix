@@ -23,8 +23,8 @@
     inputs.zen-browser.homeModules.beta
     inputs.nvf.homeManagerModules.default
 
-    ../../modules/hm-hyprland.nix
-    ../../modules/hm-moondeck-buddy.nix
+    ../../modules/hm-modules/hm-hyprland.nix
+    ../../modules/hm-modules/hm-moondeck-buddy.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -170,20 +170,20 @@
 
   programs.fish = {
     enable = true;
-    interactiveShellInit = ''
-      set fish_greeting
-    '';
-    plugins = [
-      {
-        name = "grc";
-        src = pkgs.fishPlugins.grc.src;
-      }
-      {
-        name = "git";
-        src = pkgs.fishPlugins.plugin-git.src;
-      }
-    ];
   };
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion = {
+      enable = true;
+      strategy = ["match_prev_cmd" "completion"];
+    };
+    syntaxHighlighting.enable = true;
+    oh-my-zsh = {
+      enable = true;
+    };
+  };
+
   programs.zoxide.enable = true;
 
   programs.zen-browser = {
@@ -251,15 +251,6 @@
   };
   programs.starship = {
     enable = true;
-  };
-  programs.bash = {
-    enable = true;
-    bashrcExtra = ''
-      if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z "$BASH_EXECUTION_STRING" ]]; then
-        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec fish $LOGIN_OPTION
-      fi
-    '';
   };
 
   programs.moondeck-buddy = {

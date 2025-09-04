@@ -11,4 +11,5 @@ with pkgs; [
   efibootmgr
   via
   qmk
+  zsh
 ]

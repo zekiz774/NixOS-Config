@@ -6,15 +6,30 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/system-modules/gamescope.nix
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = false;
+    configurationLimit = 10;
+  };
+
+  boot.loader.grub = {
+    enable = true;
+
+    device = "nodev";
+    useOSProber = true;
+    efiSupport = true;
+  };
+
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -95,6 +110,8 @@
     ];
   };
 
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -233,4 +250,43 @@
 
   services.udev.packages = [pkgs.via];
   hardware.keyboard.qmk.enable = true;
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    loadModels = [
+      "deepseek-r1:14b"
+      "gpt-oss:20b"
+      "gemma3:27b-it-qat"
+      "qwen3:30b"
+    ];
+  };
+  services.open-webui = {
+    enable = false;
+    openFirewall = true;
+    environment = {
+      ANONYMIZED_TELEMETRY = "False";
+      DO_NOT_TRACK = "True";
+      SCARF_NO_ANALYTICS = "True";
+      WEBUI_AUTH = "False";
+
+      ENABLE_RAG_WEB_SEARCH = "True";
+      SEARXNG_HOSTNAME = "localhost:8089";
+      SEARXNG_UWSGI_WORKERS = "8";
+      SEARXNG_UWSGI_THREADS = "8";
+      RAG_WEB_SEARCH_ENGINE = "searxng";
+      RAG_WEB_SEARCH_RESULT_COUNT = "3";
+      RAG_WEB_SEARCH_CONCURRENT_REQUESTS = "10";
+      SEARXNG_QUERY_URL = "http://127.0.0.1:8089/search?q=<query>";
+    };
+  };
+
+  services.searx = {
+    enable = true;
+    redisCreateLocally = true;
+    settings.server.secret_key = "test";
+    settings.server.port = 8089;
+    settings.server.bind_address = "0.0.0.0";
+    settings.search.formats = ["html" "json" "rss"];
+  };
 }
