@@ -12,4 +12,8 @@ with pkgs; [
   via
   qmk
   zsh
+
+  libdrm
+  edid-decode
+  drm_info
 ]

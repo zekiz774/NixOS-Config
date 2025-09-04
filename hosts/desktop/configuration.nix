@@ -182,13 +182,21 @@ in {
     gamescopeSession = {
       enable = true;
       args = [
-        "--prefer-output=HDMI-1"
+        "-W 3849"
+        "-H 2160"
+        "-r 120"
+        "--backend drm"
         "--adaptive-sync"
-        "--hdr-enabled"
-        "--mangoapp"
+        "-O HDMI-A-1"
+
         "--rt"
-        "--steam"
+        "--hdr-enabled"
+        "--hdr-itm-target-nits 500"
+        "--mangoapp"
       ];
+      env = {
+        "LIBSEAT_BACKEND" = "logind";
+      };
     };
   };
 
