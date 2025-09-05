@@ -195,7 +195,6 @@ in {
 
         "--rt"
         "--hdr-enabled"
-        "--hdr-itm-target-nits 500"
         "--mangoapp"
       ];
       env = {
