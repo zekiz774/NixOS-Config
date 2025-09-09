@@ -264,4 +264,11 @@
     autostart = true;
     version = "1.9.0";
   };
+  localModules.hyprland = {
+    enable = true;
+    monitors = [
+      "DP-3,1920x1080@144, 0x0, 1"
+      "HDMI-A-1, 3840x2160@120.00Hz, 0x0, 1"
+    ];
+  };
 }

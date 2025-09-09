@@ -262,9 +262,6 @@ in {
     enable = true;
     acceleration = "rocm";
     loadModels = [
-      "deepseek-r1:14b"
-      "gpt-oss:20b"
-      "gemma3:27b-it-qat"
       "qwen3:30b"
     ];
   };

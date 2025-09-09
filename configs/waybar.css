@@ -3,10 +3,10 @@ window#waybar {
 }
 
 #workspaces {
-  background: red;
+  background: rgb(113, 129, 125);
   border-radius: 30px;
 }
 
 #workspaces button.active {
-  background: rgb(red, green, blue);
+  background: rgb(70%, 10%, 10%);
 }
