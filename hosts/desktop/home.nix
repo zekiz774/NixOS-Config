@@ -257,4 +257,5 @@
       "HDMI-A-1, 3840x2160@120.00Hz, 0x0, 1"
     ];
   };
+  localModules.shellConfig.enable = true;
 }
