@@ -53,6 +53,7 @@ in {
     users.users.${cfg.username} = {
       isSystemUser = true;
       group = cfg.username;
+      extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
       createHome = true;
       home = "/var/lib/${cfg.username}";
@@ -63,21 +64,20 @@ in {
         groups = [cfg.groupname];
 
         commands = [
-          {
-            command = "/run/current-system/sw/bin/nixos-rebuild";
-            options = ["NOPASSWD"];
-          }
-          {
-            command = "/run/current-system/sw/bin/nix-channel";
-            options = ["NOPASSWD"];
-          }
-          {
-            command = "/run/current-system/sw/bin/nix-collect-garbage";
-            options = ["NOPASSWD"];
-          }
+          # switch the system profile
           {
             command = "/run/current-system/sw/bin/nix-env";
             options = ["NOPASSWD"];
+          }
+          # run the activation script in the new system closure
+          {
+            command = "/nix/store/*/bin/switch-to-configuration";
+            options = ["NOPASSWD"];
+          }
+          # (optional) allow nixos-rebuild itself
+          {
+            command = "/run/current-system/sw/bin/nixos-rebuild";
+            options = ["NOPASSWD" "SETENV"];
           }
         ];
       }

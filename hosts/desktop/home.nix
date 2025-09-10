@@ -25,6 +25,7 @@
 
     ../../modules/hm-modules/hm-hyprland.nix
     ../../modules/hm-modules/hm-moondeck-buddy.nix
+    ../../modules/hm-modules/shell-config.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -168,21 +169,6 @@
     };
   };
 
-  programs.fish = {
-    enable = true;
-  };
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion = {
-      enable = true;
-      strategy = ["match_prev_cmd" "completion"];
-    };
-    syntaxHighlighting.enable = true;
-    oh-my-zsh = {
-      enable = true;
-    };
-  };
 
   programs.direnv = {
     enable = true;
@@ -190,7 +176,6 @@
     nix-direnv.enable = true;
   };
 
-  programs.zoxide.enable = true;
 
   programs.zen-browser = {
     enable = true;
@@ -258,9 +243,6 @@
     };
   };
 
-  programs.starship = {
-    enable = true;
-  };
 
   programs.moondeck-buddy = {
     enable = true;
