@@ -1,13 +1,18 @@
-{config, lib, pkgs}: let
-  inherit (lib) mkEnableOption mkOption types mkIf
-in
 {
-  options.config.shellConfig = {
-    enable = mkEnableOption "Enable the config for the shell"
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkOption types mkIf;
+  cfg = config.localModules.shellConfig;
+in {
+  options.localModules.shellConfig = {
+    enable = mkEnableOption "Enable the config for the shell";
   };
 
   config = mkIf cfg.enable {
-   programs.zsh = {
+    programs.zsh = {
       enable = true;
       enableCompletion = true;
       autosuggestion = {
@@ -24,6 +29,5 @@ in
     };
 
     programs.zoxide.enable = true;
-
   };
 }

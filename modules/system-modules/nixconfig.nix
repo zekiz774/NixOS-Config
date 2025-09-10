@@ -48,7 +48,7 @@ in {
 
   config = mkIf cfg.enable {
     #creates a custom group for nixconfig
-    users.groups.${cfg.username} = {};
+    users.groups.${cfg.groupname} = {};
     # adds the user
     users.users.${cfg.username} = {
       isSystemUser = true;
@@ -100,6 +100,7 @@ in {
 
         # Effective permissions *in the view*
         "perms=0755"
+        "create-with-perms=0755"
         "create-as-mounter"
 
         # Don’t let callers change ownership/mode in the source
@@ -123,6 +124,10 @@ in {
           home.username = cfg.username;
           home.homeDirectory = "/var/lib/${cfg.username}";
           home.stateVersion = cfg.homeManager.stateVersion;
+          imports = [
+            ../hm-modules/shell-config.nix
+          ];
+          localModules.shellConfig.enable = true;
 
           programs.zsh.enable = true;
           programs.git.enable = true;
