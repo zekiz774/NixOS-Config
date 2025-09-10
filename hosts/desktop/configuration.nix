@@ -12,6 +12,7 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/system-modules/gamescope.nix
+    ../../modules/system-modules/nixconfig.nix
   ];
 
   # Bootloader.
@@ -293,4 +294,6 @@ in {
     settings.server.bind_address = "0.0.0.0";
     settings.search.formats = ["html" "json" "rss"];
   };
+
+  system.nixconfig.enable = true;
 }

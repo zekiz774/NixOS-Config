@@ -248,6 +248,7 @@
       push.autoSetupRemote = true;
     };
   };
+
   programs.kitty = {
     enable = true;
     settings = {
@@ -255,6 +256,7 @@
       confirm_os_window_close = 0;
     };
   };
+
   programs.starship = {
     enable = true;
   };
@@ -264,6 +266,7 @@
     autostart = true;
     version = "1.9.0";
   };
+
   localModules.hyprland = {
     enable = true;
     monitors = [
