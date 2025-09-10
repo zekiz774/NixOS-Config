@@ -295,5 +295,8 @@ in {
     settings.search.formats = ["html" "json" "rss"];
   };
 
-  system.nixconfig.enable = true;
+  system.nixconfig = {
+    enable = true;
+    homeManager.enable = true;
+  };
 }

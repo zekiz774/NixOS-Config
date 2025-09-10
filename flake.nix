@@ -64,7 +64,9 @@
 
     # home configuration
     homeConfigurations.nixos = home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgs;
+      useGlobalPkgs = true;
+      userUserPackages = true;
+
       extraSpecialArgs = {inherit inputs;};
       modules = [
         ./hosts/desktop/home.nix

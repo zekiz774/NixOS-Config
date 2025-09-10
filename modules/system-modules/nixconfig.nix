@@ -3,12 +3,15 @@
   options,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf optionalString;
   cfg = config.system.nixconfig;
   viewMount = "/run/${cfg.username}/nixos-config";
 in {
+  imports = lib.optional (inputs ? home-manager) inputs.home-manager.nixosModules.home-manager;
+
   options.system.nixconfig = {
     enable = mkEnableOption "NixConfig user for secure access";
 
@@ -28,6 +31,18 @@ in {
     configdirectory = mkOption {
       type = types.str;
       default = "/etc/nixos";
+    };
+
+    homeManager = {
+      enable = mkEnableOption "enable homeManager for nixconfig user";
+      stateVersion = mkOption {
+        type = types.str;
+        default = "24.05";
+      };
+      extraConfig = mkOption {
+        type = types.attrs;
+        default = {};
+      };
     };
   };
 
@@ -100,6 +115,19 @@ in {
         "x-systemd.idle-timeout=0"
       ];
       neededForBoot = false;
+    };
+    home-manager = mkIf cfg.homeManager.enable {
+      users.${cfg.username} = {pkgs, ...}: (
+        {
+          home.username = cfg.username;
+          home.homeDirectory = "/var/lib/${cfg.username}";
+          home.stateVersion = cfg.homeManager.stateVersion;
+
+          programs.zsh.enable = true;
+          programs.git.enable = true;
+        }
+        // cfg.homeManager.extraConfig
+      );
     };
   };
 }
