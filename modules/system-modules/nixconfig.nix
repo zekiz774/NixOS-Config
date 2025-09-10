@@ -86,7 +86,7 @@ in {
     # Private mountpoint for the user
     systemd.tmpfiles.rules = [
       "d /run/${cfg.username} 0755 root root -"
-      "d ${viewMount} 0700 root root -"
+      "d ${viewMount} 0755 root root -"
     ];
 
     # Writable bindfs view: user can create/edit; source stays root-owned.
@@ -99,8 +99,8 @@ in {
         "force-group=${cfg.groupname}"
 
         # Effective permissions *in the view*
-        "perms=0700" # only that user can R/W/X in the view
-        "create-with-perms=0700" # default perms for new files (tweak as you like)
+        "perms=0755"
+        "create-as-mounter"
 
         # Don’t let callers change ownership/mode in the source
         "chown-ignore"
@@ -116,6 +116,7 @@ in {
       ];
       neededForBoot = false;
     };
+
     home-manager = mkIf cfg.homeManager.enable {
       users.${cfg.username} = {pkgs, ...}: (
         {
@@ -125,6 +126,7 @@ in {
 
           programs.zsh.enable = true;
           programs.git.enable = true;
+          programs.zoxide.enable = true;
         }
         // cfg.homeManager.extraConfig
       );
