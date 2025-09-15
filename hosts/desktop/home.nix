@@ -26,7 +26,6 @@
     ../../modules/hm-modules/hm-hyprland.nix
     ../../modules/hm-modules/hm-moondeck-buddy.nix
     ../../modules/hm-modules/shell-config.nix
-    ../../modules/hm-modules/davinci-resolve.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -69,6 +68,7 @@
 
     #desktop
     blender-hip
+    davinci-resolve
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
