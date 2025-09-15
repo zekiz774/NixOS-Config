@@ -299,4 +299,16 @@ in {
     enable = true;
     homeManager.enable = true;
   };
+  services.printing.drivers = [
+  pkgs.brlaser
+  pkgs.brgenml1lpr
+  pkgs.brgenml1cupswrapper
+];
+
+hardware.opentabletdriver = {
+  enable = true;
+  daemon.enable = true;
+  blacklistedKernelModules = ["wacom"];
+};
+
 }

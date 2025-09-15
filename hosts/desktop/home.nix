@@ -26,6 +26,7 @@
     ../../modules/hm-modules/hm-hyprland.nix
     ../../modules/hm-modules/hm-moondeck-buddy.nix
     ../../modules/hm-modules/shell-config.nix
+    ../../modules/hm-modules/davinci-resolve.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -44,7 +45,7 @@
     ffmpeg
     yt-dlp
     godot
-    rofi-wayland
+    rofi
     btop
     powertop
     playerctl
@@ -55,6 +56,8 @@
     tree
     chromium
     jq
+    osu-lazer-bin
+    lutris
 
     #hardware utils
     iw
@@ -169,13 +172,11 @@
     };
   };
 
-
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
-
 
   programs.zen-browser = {
     enable = true;
@@ -243,7 +244,6 @@
     };
   };
 
-
   programs.moondeck-buddy = {
     enable = true;
     autostart = true;
@@ -254,7 +254,7 @@
     enable = true;
     monitors = [
       "DP-3,1920x1080@144, 0x0, 1"
-      "HDMI-A-1, 3840x2160@120.00Hz, 0x0, 1"
+      "HDMI-A-1, 3840x2160@120.00Hz, 0x0, 1.5"
     ];
   };
   localModules.shellConfig.enable = true;
