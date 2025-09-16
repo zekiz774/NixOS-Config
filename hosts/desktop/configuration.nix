@@ -204,8 +204,6 @@ in {
       steamArgs = [
         "-tenfoot"
         "-pipewire-dmabuf"
-        "-steamdeck"
-        "-steamos3"
       ];
     };
   };
@@ -222,10 +220,10 @@ in {
     extraPackages = with pkgs; [rocmPackages.clr.icd rocmPackages.hiprt];
   };
 
-  programs.alvr = {
-    enable = true;
-    openFirewall = true;
-  };
+  # programs.alvr = {
+  #   enable = true;
+  #   openFirewall = true;
+  # };
 
   systemd.tmpfiles.rules = let
     rocmEnv = pkgs.symlinkJoin {
@@ -300,15 +298,14 @@ in {
     homeManager.enable = true;
   };
   services.printing.drivers = [
-  pkgs.brlaser
-  pkgs.brgenml1lpr
-  pkgs.brgenml1cupswrapper
-];
+    pkgs.brlaser
+    pkgs.brgenml1lpr
+    pkgs.brgenml1cupswrapper
+  ];
 
-hardware.opentabletdriver = {
-  enable = true;
-  daemon.enable = true;
-  blacklistedKernelModules = ["wacom"];
-};
-
+  hardware.opentabletdriver = {
+    enable = true;
+    daemon.enable = true;
+    blacklistedKernelModules = ["wacom"];
+  };
 }
