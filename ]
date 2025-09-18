@@ -126,7 +126,6 @@ in {
           imports = [
             ../hm-modules/shell-config.nix
             ../hm-modules/editor-config.nix
-            inputs.nvf.homeManagerModules.default
           ];
           localModules.shellConfig.enable = true;
           localModules.editorConfig.enable = true;

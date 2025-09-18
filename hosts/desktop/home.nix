@@ -22,10 +22,10 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     inputs.nvf.homeManagerModules.default
-
     ../../modules/hm-modules/hm-hyprland.nix
     ../../modules/hm-modules/hm-moondeck-buddy.nix
     ../../modules/hm-modules/shell-config.nix
+    ../../modules/hm-modules/editor-config.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -57,6 +57,7 @@
     jq
     osu-lazer-bin
     lutris
+    google-chrome
 
     #hardware utils
     iw
@@ -125,52 +126,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.nvf = {
-    enable = true;
-    settings = {
-      vim = {
-        theme = {
-          enable = true;
-          name = "tokyonight";
-          transparent = true;
-          style = "night";
-        };
-        telescope.enable = true;
-        autocomplete.nvim-cmp.enable = true;
-        viAlias = true;
-        vimAlias = true;
-        lsp = {
-          enable = true;
-          formatOnSave = true;
-        };
-        clipboard = {
-          enable = true;
-          providers.wl-copy.enable = true;
-          registers = "unnamedplus";
-        };
-
-        languages = {
-          enableTreesitter = true;
-          enableFormat = true;
-          enableExtraDiagnostics = true;
-
-          nix = {
-            enable = true;
-          };
-          css.enable = true;
-          ts.enable = true;
-          markdown.enable = true;
-        };
-
-        formatter.conform-nvim.enable = true;
-        utility.snacks-nvim.enable = true;
-        binds.whichKey.enable = true;
-        utility.oil-nvim.enable = true;
-        globals.editorconfig = true;
-      };
-    };
-  };
 
   programs.direnv = {
     enable = true;
@@ -258,4 +213,5 @@
     ];
   };
   localModules.shellConfig.enable = true;
+  localModules.editorConfig.enable = true;
 }

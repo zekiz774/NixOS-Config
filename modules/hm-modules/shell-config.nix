@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
@@ -25,7 +24,7 @@ in {
       };
     };
     programs.starship = {
-    enable = true;
+      enable = true;
       settings = {
         add_newline = false;
         format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
@@ -47,6 +46,8 @@ in {
         };
       };
     };
+
+    programs.tmux.enable = true;
     programs.zoxide.enable = true;
   };
 }
