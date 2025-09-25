@@ -24,6 +24,7 @@ in {
     home.packages = with pkgs; [
       pavucontrol
     ];
+
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {

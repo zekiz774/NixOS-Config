@@ -67,7 +67,7 @@ in {
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
+  services.displayManager.ly.enable = true;
   services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
@@ -184,6 +184,7 @@ in {
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    protontricks.enable = true;
     gamescopeSession = {
       enable = true;
       args = [

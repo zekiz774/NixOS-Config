@@ -58,6 +58,7 @@
     osu-lazer-bin
     lutris
     google-chrome
+    unzip
 
     #hardware utils
     iw
@@ -69,8 +70,7 @@
 
     #desktop
     blender-hip
-    davinci-resolve
-
+    kdePackages.kdenlive
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
