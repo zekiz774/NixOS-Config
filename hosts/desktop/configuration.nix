@@ -190,7 +190,6 @@ in {
       args = [
         "-W 3849"
         "-H 2160"
-        "-r 120"
         "--backend drm"
         "--adaptive-sync"
         "-O HDMI-A-1"
@@ -221,10 +220,10 @@ in {
     extraPackages = with pkgs; [rocmPackages.clr.icd rocmPackages.hiprt];
   };
 
-  # programs.alvr = {
-  #   enable = true;
-  #   openFirewall = true;
-  # };
+  programs.alvr = {
+    enable = true;
+    openFirewall = true;
+  };
 
   systemd.tmpfiles.rules = let
     rocmEnv = pkgs.symlinkJoin {

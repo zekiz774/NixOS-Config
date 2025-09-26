@@ -31,6 +31,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    iw
+    wine
+    python3
     wl-clipboard
     nerd-fonts.jetbrains-mono
     onlyoffice-bin
@@ -59,6 +62,8 @@
     lutris
     google-chrome
     unzip
+    protontricks
+    winetricks
 
     #hardware utils
     iw
