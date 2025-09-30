@@ -30,7 +30,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
   };
 
   outputs = {
@@ -54,7 +53,7 @@
     };
   in {
     # system configuration
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       inherit system;
       pkgs = pkgs;
       specialArgs = {inherit inputs;};
@@ -63,13 +62,31 @@
       ];
     };
 
+    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+      inherit system;
+      pkgs = pkgs;
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/laptop/configuration.nix
+      ];
+    };
+
     # home configuration
-    homeConfigurations.nixos = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.desktop = home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs;
 
       extraSpecialArgs = {inherit inputs;};
       modules = [
         ./hosts/desktop/home.nix
+      ];
+    };
+
+    homeConfigurations.laptop = home-manager.lib.homeManagerConfiguration {
+      pkgs = pkgs;
+
+      extraSpecialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/laptop/home.nix
       ];
     };
   };
