@@ -156,7 +156,6 @@ in {
         windowrule = [
           "suppressevent maximize, class:."
           "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:2,pinned:0"
-          "suppressevent fullscreen, class:.*"
         ];
       };
     };

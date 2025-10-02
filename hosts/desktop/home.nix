@@ -32,9 +32,13 @@
   # environment.
   home.packages = with pkgs; [
     tor-browser
+    gimp
+    appimage-run
+    (python313.withPackages (ps: [
+      (ps.torch.override {rocmSupport = true;})
+    ]))
     iw
     wine
-    python3
     wl-clipboard
     nerd-fonts.jetbrains-mono
     onlyoffice-bin
@@ -220,4 +224,17 @@
   };
   localModules.shellConfig.enable = true;
   localModules.editorConfig.enable = true;
+
+  programs.obs-studio = {
+    enable = true;
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-vaapi #optional AMD hardware acceleration
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
 }
