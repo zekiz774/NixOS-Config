@@ -10,7 +10,6 @@
 in {
   options.localModules.hyprland = {
     enable = mkEnableOption "My hyprland configuration";
-
     monitors = mkOption {
       type = types.listOf types.str;
       default = [];
@@ -63,6 +62,7 @@ in {
           "HYPRCURSOR_SIZE,20"
           "GDK_SCALE,1.2"
         ];
+
         xwayland.force_zero_scaling = true;
         debug.full_cm_proto = true;
 
@@ -123,7 +123,7 @@ in {
         general = {
           gaps_in = 5;
           gaps_out = 10;
-          border_size = 2;
+          border_size = 1;
           allow_tearing = false;
 
           layout = "dwindle";
@@ -213,6 +213,17 @@ in {
           # 5. Minimal configuration for the clock module (as an example)
           "clock" = {
             "format" = " {:%H:%M}"; # Example:  14:30
+          };
+
+          "network" = {
+            "format" = "{essid} {signal}%";
+            "format-alt" = "{ifname} {ipaddr}/{cidr}";
+
+            "format-icons" = {
+              "wifi" = ["󰤨" "󰤥" "󰤢" "󰤟" "󰤯"];
+              "ethernet" = ["󰈁"];
+              "disconnected" = ["󰤭"];
+            };
           };
         };
       };

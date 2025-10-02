@@ -31,6 +31,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    dotnet-sdk
+    dotnet-runtime
+    drawio
     iw
     wine
     python3
@@ -199,8 +202,7 @@
   localModules.hyprland = {
     enable = true;
     monitors = [
-      "DP-3,1920x1080@144, 0x0, 1"
-      "HDMI-A-1, 3840x2160@120.00Hz, 0x0, 1.5"
+      "eDP1,1920x1080@60, 0x0, 1"
     ];
   };
   localModules.shellConfig.enable = true;
