@@ -105,7 +105,7 @@ in {
   users.users.zekiz = {
     isNormalUser = true;
     description = "zekiz";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "corectrl"];
     packages = with pkgs; [
       #  thunderbird
     ];
@@ -308,4 +308,6 @@ in {
     daemon.enable = true;
     blacklistedKernelModules = ["wacom"];
   };
+
+  programs.corectrl.enable = true;
 }

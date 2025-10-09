@@ -31,6 +31,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    orca-slicer
     tor-browser
     gimp
     appimage-run
@@ -74,7 +75,6 @@
     iw
     lm_sensors
     radeontop
-    corectrl
     mprime
     vulkan-tools
 
