@@ -231,8 +231,7 @@ in {
           };
         };
       };
-
-      style = builtins.readFile ../../configs/waybar.css;
     };
+    home.file.".config/waybar/style.css".source = ../../configs/waybar.css;
   };
 }
