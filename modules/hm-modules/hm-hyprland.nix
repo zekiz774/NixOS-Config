@@ -157,6 +157,11 @@ in {
           "suppressevent maximize, class:."
           "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:2,pinned:0"
         ];
+        windowrulev2 = [
+          "stayfocused,class:(zoom),initialTitle:(menu window)"
+          "tag +games, class:^(steam_app_\d+)$"
+          "fullscreen, tag:games*"
+        ];
       };
     };
 

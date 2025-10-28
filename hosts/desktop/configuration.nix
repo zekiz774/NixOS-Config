@@ -265,13 +265,13 @@ in {
     ];
   };
   services.open-webui = {
-    enable = false;
+    enable = true;
     openFirewall = true;
     environment = {
       ANONYMIZED_TELEMETRY = "False";
       DO_NOT_TRACK = "True";
       SCARF_NO_ANALYTICS = "True";
-      WEBUI_AUTH = "False";
+      WEBUI_AUTH = "True";
 
       ENABLE_RAG_WEB_SEARCH = "True";
       SEARXNG_HOSTNAME = "localhost:8089";

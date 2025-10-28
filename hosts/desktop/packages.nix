@@ -16,6 +16,4 @@ with pkgs; [
   libdrm
   edid-decode
   drm_info
-
-  rpi-imager
 ]
