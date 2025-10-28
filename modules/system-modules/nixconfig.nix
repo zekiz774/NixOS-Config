@@ -12,7 +12,8 @@
 in {
   imports = lib.optional (inputs ? home-manager) inputs.home-manager.nixosModules.home-manager;
 
-  options.system.nixconfig = { enable = mkEnableOption "NixConfig user for secure access";
+  options.system.nixconfig = {
+    enable = mkEnableOption "NixConfig user for secure access";
 
     username = mkOption {
       type = types.str;
@@ -52,7 +53,7 @@ in {
     users.users.${cfg.username} = {
       isSystemUser = true;
       group = cfg.username;
-      extraGroups = [ "wheel" ];
+      extraGroups = ["wheel"];
       shell = pkgs.zsh;
       createHome = true;
       home = "/var/lib/${cfg.username}";
@@ -134,10 +135,19 @@ in {
           programs.zsh.enable = true;
           programs.git.enable = true;
           programs.zoxide.enable = true;
-
         }
         // cfg.homeManager.extraConfig
       );
     };
+
+    # add custom nixconfig command to switch to the nixuser user and enter the config directory
+
+    environment.systemPackages = with pkgs; [
+      (
+        writeShellScriptBin "nixconfig" ''
+          sudo -u nixconfig sh -lc 'cd /run/nixconfig/nixos-config && exec "$SHELL" -l'
+        ''
+      )
+    ];
   };
 }
