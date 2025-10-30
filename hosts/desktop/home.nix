@@ -42,7 +42,7 @@
     wine
     wl-clipboard
     nerd-fonts.jetbrains-mono
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     vesktop
     obsidian
     grc

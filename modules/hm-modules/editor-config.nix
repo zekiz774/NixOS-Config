@@ -47,7 +47,10 @@ in {
             };
             css.enable = true;
             ts.enable = true;
-            markdown.enable = true;
+            markdown = {
+              enable = true;
+              extensions.render-markdown-nvim.enable = true;
+            };
             tailwind.enable = true;
             tailwind.lsp.enable = true;
           };
@@ -73,6 +76,30 @@ in {
           utility.oil-nvim.enable = true;
           globals.editorconfig = true;
           ui.colorizer.setupOpts.user_default_options.tailwind = true;
+
+          assistant.codecompanion-nvim = {
+            enable = true;
+            setupOpts = {
+              adapters = lib.mkLuaInline ''
+                {
+                  qwen3 = function()
+                    return require("codecompanion.adapters").extend("ollama", {
+                      name = "qwen3-coder",
+                      env = {
+                        url = "http://localhost:11434",
+                      },
+                      schema = {
+                        model = {
+                          default = 'qwen3-coder:30b'
+                        },
+                      },
+                    })
+                    end,
+                }
+              '';
+              strategies.chat.adapter = "qwen3";
+            };
+          };
         };
       };
     };

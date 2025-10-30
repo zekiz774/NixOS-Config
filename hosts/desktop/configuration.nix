@@ -262,6 +262,7 @@ in {
     acceleration = "rocm";
     loadModels = [
       "qwen3:30b"
+      "qwen3-coder:30b"
     ];
   };
   services.open-webui = {
