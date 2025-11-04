@@ -98,6 +98,11 @@ in {
                 }
               '';
               strategies.chat.adapter = "qwen3";
+              strategies.inline.adapter = "qwen3";
+              display = {
+                action_pallete.provider = "telescope";
+                diff.provider = "mini_diff";
+              };
             };
           };
         };

@@ -135,6 +135,9 @@ in {
           programs.zsh.enable = true;
           programs.git.enable = true;
           programs.zoxide.enable = true;
+          home.packages = with pkgs; [
+            wl-clipboard
+          ];
         }
         // cfg.homeManager.extraConfig
       );

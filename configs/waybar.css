@@ -8,9 +8,12 @@ window#waybar {
 
 #workspaces {
   background: rgb(113, 129, 125);
-  border-radius: 30px;
+  border-radius: 0.2rem;
 }
 
 #workspaces button.active {
-  background: rgb(70%, 10%, 10%);
+  border-bottom: 0.2em solid red;
+  border-bottom-color: red;
+  transition: border-bottom 1s ease-in-out;
+  font-weight: bold;
 }

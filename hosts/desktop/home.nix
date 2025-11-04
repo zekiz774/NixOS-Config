@@ -26,77 +26,25 @@
     ../../modules/hm-modules/hm-moondeck-buddy.nix
     ../../modules/hm-modules/shell-config.nix
     ../../modules/hm-modules/editor-config.nix
+    ../../common/home.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    blender-hip
+    kdePackages.kdenlive
     orca-slicer
-    tor-browser
-    gimp
-    appimage-run
+    osu-lazer-bin
+    prismlauncher
+
+    # Tools
+    radeontop
+    vulkan-tools
+
     (python313.withPackages (ps: [
       (ps.torch.override {rocmSupport = true;})
     ]))
-    iw
-    wine
-    wl-clipboard
-    nerd-fonts.jetbrains-mono
-    onlyoffice-desktopeditors
-    vesktop
-    obsidian
-    grc
-    gcc
-    ripgrep
-    nodejs
-    imagemagick
-    ffmpeg
-    yt-dlp
-    godot
-    rofi
-    btop
-    powertop
-    playerctl
-    brightnessctl
-    usbutils
-    steam-run
-    prismlauncher
-    tree
-    chromium
-    jq
-    osu-lazer-bin
-    lutris
-    google-chrome
-    unzip
-    protontricks
-    winetricks
-
-    #hardware utils
-    iw
-    lm_sensors
-    radeontop
-    mprime
-    vulkan-tools
-
-    #desktop
-    blender-hip
-    kdePackages.kdenlive
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -218,8 +166,8 @@
   localModules.hyprland = {
     enable = true;
     monitors = [
-      "DP-3,1920x1080@144, 0x0, 1"
-      "HDMI-A-1, 3840x2160@120.00Hz, 0x0, 1.5"
+      "DP-3,1920x1080@144, auto, 1"
+      "HDMI-A-1, 3840x2160@120.00Hz, auto, 1.5"
     ];
   };
   localModules.shellConfig.enable = true;
