@@ -34,6 +34,7 @@
   home.packages = with pkgs; [
     blender-hip
     kdePackages.kdenlive
+    nexusmods-app-unfree
     orca-slicer
     osu-lazer-bin
     prismlauncher
