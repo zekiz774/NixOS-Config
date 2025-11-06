@@ -13,6 +13,7 @@ in {
     ./hardware-configuration.nix
     ../../modules/system-modules/gamescope.nix
     ../../modules/system-modules/nixconfig.nix
+    ../../modules/system-modules/ly.nix
   ];
 
   # Bootloader.
@@ -67,17 +68,7 @@ in {
   services.xserver.enable = true;
 
   # displayManager config
-  services.displayManager.ly = {
-    enable = true;
-    settings = {
-      animate = true;
-      animation = "colormix";
-
-      auto_login_service = "ly-autologin";
-      auto_login_session = "hyprland";
-      auto_login_user = "zekiz";
-    };
-  };
+  localModules.ly.enable = true;
   # Enable the GNOME Desktop Environment.
 
   services.desktopManager.gnome.enable = true;
