@@ -162,10 +162,16 @@ in {
   # hyprland configuration
   # sets up cachix mirror for hyprland
   nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
+    substituters = [
+	"https://hyprland.cachix.org"
+	"https://aseipp-nix-cache.global.ssl.fastly.net"
+    ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
+    http-connections = 128;
+    max-substitution-jobs = 128;
+    max-jobs = "auto";
   };
 
   programs.hyprland = {
