@@ -66,8 +66,20 @@ in {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  # displayManager config
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      animate = true;
+      animation = "colormix";
+
+      auto_login_service = "ly-autologin";
+      auto_login_session = "hyprland";
+      auto_login_user = "zekiz";
+    };
+  };
   # Enable the GNOME Desktop Environment.
-  services.displayManager.ly.enable = true;
+
   services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
