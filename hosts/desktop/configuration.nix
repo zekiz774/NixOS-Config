@@ -163,8 +163,8 @@ in {
   # sets up cachix mirror for hyprland
   nix.settings = {
     substituters = [
-	"https://hyprland.cachix.org"
-	"https://aseipp-nix-cache.global.ssl.fastly.net"
+      "https://hyprland.cachix.org"
+      "https://aseipp-nix-cache.global.ssl.fastly.net"
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -266,10 +266,6 @@ in {
   services.ollama = {
     enable = true;
     acceleration = "rocm";
-    loadModels = [
-      "qwen3:30b"
-      "qwen3-coder:30b"
-    ];
   };
   services.open-webui = {
     enable = true;
