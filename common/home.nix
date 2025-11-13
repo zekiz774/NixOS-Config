@@ -4,6 +4,9 @@
   system,
   ...
 }: {
+  imports = [
+    ../modules/hm-modules/asfp-overlay.nix
+  ];
   home.packages = with pkgs; [
     #desktop
     appimage-run
@@ -18,6 +21,7 @@
 
     # tools
     btop
+    devenv
     ffmpeg
     gcc
     imagemagick

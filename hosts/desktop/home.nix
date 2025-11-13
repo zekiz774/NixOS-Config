@@ -38,6 +38,7 @@
     orca-slicer
     osu-lazer-bin
     prismlauncher
+    androidStudioForPlatformPackages.canary
 
     # Tools
     radeontop

@@ -12,6 +12,7 @@ with pkgs; [
   via
   qmk
   zsh
+  rsync
 
   libdrm
   edid-decode
