@@ -7,8 +7,6 @@
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.localModules.hyprland;
-
-  shutterSound = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/camera-shutter.oga";
 in {
   options.localModules.hyprland = {
     enable = mkEnableOption "My hyprland configuration";
@@ -27,7 +25,32 @@ in {
       wl-clipboard
       grim
       slurp
+      libnotify
+
+      (writeShellScriptBin "screenshot" ''
+        #!/usr/bin/env sh
+
+        shutter="${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/camera-shutter.oga"
+        file="$HOME/Pictures/screenshot-$(date +'%Y%m%d-%H%M%S').png"
+        selection=$(slurp)
+
+        if [ "$1" = "--region"]; then
+                if [ $? -ne 0 ] || [ -z "$selection" ]; then
+                    notify-send "Screenshot cancelled"
+                    exit 1
+                fi
+                grim -g "$selection" - | tee "$file" | wl-copy
+        else
+            grim  - | tee "$file" | wl-copy
+        fi
+
+        pw-play "$shutter"
+        notify-send "Screenshot saved" "$file"
+      '')
     ];
+
+    # set a notification deamon
+    services.swaync.enable = true;
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -75,11 +98,11 @@ in {
           [
             "$mod, B, exec, zen-beta"
             # screenshot
-            '', Print, exec, grim -g "$(slurp)" - | tee ~/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && pw-play ${shutterSound}''
+            '', Print, exec, screenshot --region''
 
-            ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | tee ~/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && pw-play ${shutterSound}''
+            ''$mod SHIFT, S, exec, screenshot --region''
 
-            ''$mod, S, exec, grim "$(slurp)" - | tee ~/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && pw-play ${shutterSound}''
+            ''$mod, S, exec, screenshot ''
 
             "$mod, SPACE, exec, $menu"
             "$mod, return, exec, kitty"
