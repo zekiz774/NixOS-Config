@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types mkIf optionalString;
+  inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.localModules.hyprland;
 in {
   options.localModules.hyprland = {
@@ -22,6 +22,9 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       pavucontrol
+      wl-clipboard
+      grim
+      slurp
     ];
 
     wayland.windowManager.hyprland = {
@@ -68,8 +71,8 @@ in {
 
         bind =
           [
-            "$mod, F, exec, zen-beta"
-            ", Print, exec, grimblast copy area"
+            "$mod, B, exec, zen-beta"
+            '', Print, exec, grim -g "$(slurp)" - | tee ~/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && pw-play ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/camera-shutter.oga''
             "$mod, SPACE, exec, $menu"
             "$mod, return, exec, kitty"
             "$mod, M, exit"
@@ -154,13 +157,10 @@ in {
         };
 
         windowrule = [
-          "suppressevent maximize, class:."
-          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:2,pinned:0"
-        ];
-        windowrulev2 = [
-          "stayfocused,class:(zoom),initialTitle:(menu window)"
-          "tag +games, class:^(steam_app_\d+)$"
-          "fullscreen, tag:games*"
+          "suppress_event maximize, match:class .* "
+          "no_initial_focus on, match:class ^$, match:title ^$, match:xwayland 1, match:float 1, match:fullscreen 2, match:pin 0"
+          "tag +games, match:class ^steam_app_\d+$"
+          "fullscreen on, match:tag games*"
         ];
       };
     };
