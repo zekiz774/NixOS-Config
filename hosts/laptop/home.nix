@@ -151,7 +151,7 @@
   localModules.hyprland = {
     enable = true;
     monitors = [
-      "eDP1,1920x1080@60, 0x0, 1"
+      "eDP-1,1920x1080@60, auto, 1"
     ];
   };
   localModules.shellConfig.enable = true;
