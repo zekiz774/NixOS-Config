@@ -105,6 +105,7 @@ in {
           "$mod, mouse:272, movewindow"
           "$mod, mouse:273, rezizewindow"
         ];
+
         bindel = [
           ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
           ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
@@ -154,11 +155,8 @@ in {
         };
 
         windowrule = [
-          "suppressevent maximize, class:."
-          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:2,pinned:0"
-        ];
-        windowrulev2 = [
-          "stayfocused,class:(zoom),initialTitle:(menu window)"
+          "nofocus,xwayland:1,floating:1,fullscreen:1,pinned:0"
+
           "tag +games, class:^(steam_app_\d+)$"
           "fullscreen, tag:games*"
         ];

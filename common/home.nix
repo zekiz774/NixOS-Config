@@ -22,6 +22,7 @@
     # tools
     btop
     devenv
+    dmidecode
     ffmpeg
     gcc
     imagemagick
@@ -40,9 +41,9 @@
     unzip
     usbutils
     vulkan-tools
+    wev
     wine
     winetricks
     yt-dlp
-    dmidecode
   ];
 }
