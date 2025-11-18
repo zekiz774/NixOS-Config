@@ -206,4 +206,5 @@ in {
     daemon.enable = true;
     blacklistedKernelModules = ["wacom"];
   };
+  programs.steam.enable = true;
 }
