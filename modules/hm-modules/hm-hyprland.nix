@@ -7,6 +7,8 @@
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.localModules.hyprland;
+
+  shutterSound = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/camera-shutter.oga";
 in {
   options.localModules.hyprland = {
     enable = mkEnableOption "My hyprland configuration";
@@ -72,7 +74,13 @@ in {
         bind =
           [
             "$mod, B, exec, zen-beta"
-            '', Print, exec, grim -g "$(slurp)" - | tee ~/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && pw-play ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/camera-shutter.oga''
+            # screenshot
+            '', Print, exec, grim -g "$(slurp)" - | tee ~/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && pw-play ${shutterSound}''
+
+            ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | tee ~/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && pw-play ${shutterSound}''
+
+            ''$mod, S, exec, grim "$(slurp)" - | tee ~/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && pw-play ${shutterSound}''
+
             "$mod, SPACE, exec, $menu"
             "$mod, return, exec, kitty"
             "$mod, M, exit"
