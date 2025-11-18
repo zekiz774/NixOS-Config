@@ -232,7 +232,7 @@ in {
   };
 
   programs.alvr = {
-    enable = true;
+    enable = false;
     openFirewall = true;
   };
 
@@ -273,7 +273,7 @@ in {
     acceleration = "rocm";
   };
   services.open-webui = {
-    enable = true;
+    enable = false;
     openFirewall = true;
     environment = {
       ANONYMIZED_TELEMETRY = "False";
@@ -305,6 +305,7 @@ in {
     enable = true;
     homeManager.enable = true;
   };
+
   services.printing.drivers = [
     pkgs.brlaser
     pkgs.brgenml1lpr

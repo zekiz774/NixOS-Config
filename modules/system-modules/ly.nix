@@ -7,8 +7,8 @@
   inherit (lib) mkEnableOption mkOption type mkIf;
   cfg = config.localModules.ly;
 
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  sessions = "${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions";
+  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
+  sessions = "${config.services.displayManager.sessionData.desktops}/share/xsessions:${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
 in {
   options.localModules.ly = {
     enable = mkEnableOption "Enable custom Ly config";

@@ -43,5 +43,6 @@
     wine
     winetricks
     yt-dlp
+    dmidecode
   ];
 }
