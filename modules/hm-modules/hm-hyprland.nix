@@ -26,25 +26,32 @@ in {
       grim
       slurp
       libnotify
+      jq
 
       (writeShellScriptBin "screenshot" ''
         #!/usr/bin/env sh
 
         shutter="${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/camera-shutter.oga"
-        file="$HOME/Pictures/screenshot-$(date +'%Y%m%d-%H%M%S').png"
-        selection=$(slurp)
+        file="$HOME/Pictures/screenshots/screenshot-$(date +'%Y%m%d-%H%M%S').png"
 
-        if [ "$1" = "--region"]; then
+        if [ "$1" = "--region" ]; then
+
+                selection=$(slurp)
                 if [ $? -ne 0 ] || [ -z "$selection" ]; then
                     notify-send "Screenshot cancelled"
                     exit 1
                 fi
-                grim -g "$selection" - | tee "$file" | wl-copy
+
+                pw-play "$shutter"
+                grim -c -g "$selection" "$file"
         else
-            grim  - | tee "$file" | wl-copy
+                active_output=$(hyprctl -j activeworkspace | jq -r '.monitor')
+
+                pw-play $shutter
+                grim -c -o $active_output "$file"
         fi
 
-        pw-play "$shutter"
+                wl-copy < "$file"
         notify-send "Screenshot saved" "$file"
       '')
     ];
