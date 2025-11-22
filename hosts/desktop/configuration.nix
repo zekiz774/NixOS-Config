@@ -72,6 +72,7 @@ in {
   # Enable the GNOME Desktop Environment.
 
   services.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = with pkgs; [orca];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -319,4 +320,7 @@ in {
   };
 
   programs.corectrl.enable = true;
+
+  # Disable the AT-SPI bus for all users
+  systemd.user.services.at-spi-dbus-bus.enable = false;
 }

@@ -168,8 +168,8 @@
   localModules.hyprland = {
     enable = true;
     monitors = [
-      "DP-3,1920x1080@144, auto, 1"
-      "HDMI-A-1, 3840x2160@120.00Hz, auto, 1.5"
+      "DP-3, 1920x1080@144, auto, 1"
+      "HDMI-A-1, 3840x2160@120, auto, 1.5"
     ];
   };
   localModules.shellConfig.enable = true;
