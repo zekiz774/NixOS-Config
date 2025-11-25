@@ -36,6 +36,7 @@ in {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos"; # Define your hostname.
+  networking.nameservers = ["1.1.1.1" "9.9.9.9"];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -207,4 +208,8 @@ in {
     blacklistedKernelModules = ["wacom"];
   };
   programs.steam.enable = true;
+
+  # Disable the AT-SPI bus for all users
+  systemd.user.services.at-spi-dbus-bus.enable = false;
+  environment.gnome.excludePackages = with pkgs; [orca];
 }

@@ -123,10 +123,6 @@ in {
             "$mod, l, movefocus, r"
             "$mod, k, movefocus, u"
             "$mod, j, movefocus, d"
-
-            # Scroll through existing workspaces with $mod + scroll
-            "$mod, mouse_down, workspace, e+1"
-            "$mod, mouse_up, workspace, e-1"
           ]
           ++ (
             # workspaces
@@ -250,8 +246,8 @@ in {
           "spacing" = 4;
 
           # 3. Define modules for the left, center, and right sections
-          "modules-left" = ["clock"];
-          "modules-center" = ["hyprland/workspaces"]; # Added a clock for a basic working example
+          "modules-center" = ["clock"];
+          "modules-left" = ["hyprland/workspaces"]; # Added a clock for a basic working example
           "modules-right" = ["tray" "pulseaudio" "network" "cpu" "memory" "battery"];
 
           # 4. Minimal configuration for the hyprland/workspaces module

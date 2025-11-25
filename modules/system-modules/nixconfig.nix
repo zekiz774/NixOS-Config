@@ -148,7 +148,8 @@ in {
     environment.systemPackages = with pkgs; [
       (
         writeShellScriptBin "nixconfig" ''
-          sudo -u nixconfig sh -lc 'cd /run/nixconfig/nixos-config && exec "$SHELL" -l'
+          sudo -u nixconfig env WAYLAND_DISPLAY="$WAYLAND_DISPLAY" XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+            sh -lc 'cd /run/nixconfig/nixos-config && exec "$SHELL" -l'
         ''
       )
     ];

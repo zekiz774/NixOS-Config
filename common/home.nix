@@ -18,6 +18,7 @@
     rofi
     tor-browser
     vesktop
+    jetbrains.rider
 
     # tools
     btop
