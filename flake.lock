@@ -244,19 +244,11 @@
         "xdph": "xdph"
       },
       "locked": {
-<<<<<<< Updated upstream
-        "lastModified": 1763595475,
-        "narHash": "sha256-gP9Lz+sJzYi6t2UD5hwGH09Kwdi84fZyuom+3QpCmFE=",
-        "owner": "hyprwm",
-        "repo": "Hyprland",
-        "rev": "f9d1da66678dbe645408aa8c6919d7debf88245d",
-=======
         "lastModified": 1764515131,
         "narHash": "sha256-gDP05ePlorViRWcDA3eYu4l+3NE53sayi6iHaaQDEMA=",
         "owner": "hyprwm",
         "repo": "Hyprland",
         "rev": "bb963fb00263bac78a0c633d1d0d02ae4763222c",
->>>>>>> Stashed changes
         "type": "github"
       },
       "original": {
@@ -328,19 +320,11 @@
         ]
       },
       "locked": {
-<<<<<<< Updated upstream
-        "lastModified": 1763579266,
-        "narHash": "sha256-akBSp/Ws70KZcfrCCpAFq9f73nAWOUwaoI3VTMy+UvY=",
-        "owner": "hyprwm",
-        "repo": "hyprland-plugins",
-        "rev": "793d24e6b53782b42a634d0f082987277c754661",
-=======
         "lastModified": 1764195033,
         "narHash": "sha256-ALRU1VfTv+Vld0bEq3UHSiM6vYxALWvss7d2eOymqbM=",
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
         "rev": "84659a2502df6b2fd245441c16a8365f5e1cd16d",
->>>>>>> Stashed changes
         "type": "github"
       },
       "original": {
@@ -560,19 +544,11 @@
         ]
       },
       "locked": {
-<<<<<<< Updated upstream
-        "lastModified": 1763629921,
-        "narHash": "sha256-GmQOua46ydQPZHd3ANTCjxH1j9SIoRGRCw+pIUHO8WI=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "18b8b7e39db04d47e1994530aed0a4fd2f937640",
-=======
         "lastModified": 1764605043,
         "narHash": "sha256-WHRTWgpEbyO2NHNhsiCbCnNfox9Xn2Pk4JAuusR4NyY=",
         "owner": "nix-community",
         "repo": "NUR",
         "rev": "508794be57ef3c9930a1d78aa3836d0f9332e785",
->>>>>>> Stashed changes
         "type": "github"
       },
       "original": {
@@ -718,19 +694,11 @@
         ]
       },
       "locked": {
-<<<<<<< Updated upstream
-        "lastModified": 1763616019,
-        "narHash": "sha256-yCNgkYovgIpOZankp38BxKFISmdc2b34vtEuVuxhTuk=",
-        "owner": "0xc000022070",
-        "repo": "zen-browser-flake",
-        "rev": "a0a29968bccb2f118b33360697d5cc5fdae30cfa",
-=======
         "lastModified": 1764598958,
         "narHash": "sha256-sJQHRL8trBoG/ArR+mUlyp5cyKU0pgQY+qDQzZGnVgM=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
         "rev": "8cded25e10b13e2999241f1c73a7d4e5e5d6f69e",
->>>>>>> Stashed changes
         "type": "github"
       },
       "original": {
