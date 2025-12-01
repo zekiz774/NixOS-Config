@@ -39,6 +39,7 @@
     osu-lazer-bin
     prismlauncher
     androidStudioForPlatformPackages.canary
+    protonup-qt
 
     # Tools
     radeontop
