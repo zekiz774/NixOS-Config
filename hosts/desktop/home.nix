@@ -170,7 +170,7 @@
     enable = true;
     monitors = [
       "DP-3, 1920x1080@144, auto, 1"
-      "HDMI-A-1, 3840x2160@120, auto, 1.5"
+      "HDMI-A-1, disable"
     ];
   };
   localModules.shellConfig.enable = true;
