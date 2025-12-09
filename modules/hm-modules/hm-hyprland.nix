@@ -191,10 +191,9 @@ in {
         };
 
         windowrule = [
-          "suppress_event maximize, match:class .* "
-          "no_initial_focus on, match:class ^$, match:title ^$, match:xwayland 1, match:float 1, match:fullscreen 2, match:pin 0"
-          "tag +games, match:class ^steam_app_\d+$"
-          "fullscreen on, match:tag games*"
+          " match:class .*,suppress_event maximize"
+          " match:class ^$,match:title ^$, match:xwayland 1, match:float 1, match:fullscreen_state_internal 2, match:pin 0, no_initial_focus on"
+          "fullscreen on, match:class ^(steam_app|heroic|lutris|bottles).*"
         ];
       };
     };

@@ -109,7 +109,7 @@ in {
   users.users.zekiz = {
     isNormalUser = true;
     description = "zekiz";
-    extraGroups = ["networkmanager" "wheel" "corectrl"];
+    extraGroups = ["networkmanager" "wheel" "corectrl" "openrazer"];
     packages = with pkgs; [
       #  thunderbird
     ];
@@ -323,4 +323,5 @@ in {
 
   # Disable the AT-SPI bus for all users
   systemd.user.services.at-spi-dbus-bus.enable = false;
+  hardware.openrazer.enable = true;
 }

@@ -13,6 +13,8 @@ with pkgs; [
   qmk
   zsh
   rsync
+  openrazer-daemon
+  polychromatic
 
   libdrm
   edid-decode
