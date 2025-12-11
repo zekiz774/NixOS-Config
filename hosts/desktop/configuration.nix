@@ -324,4 +324,14 @@ in {
   # Disable the AT-SPI bus for all users
   systemd.user.services.at-spi-dbus-bus.enable = false;
   hardware.openrazer.enable = true;
+
+  # cpu specific optimizations
+  nixpkgs.hostPlatform = {
+    gcc.arch = "znver4";
+    gcc.tune = "znver4";
+    system = "x86_64-linux";
+  };
+  nix.settings.system-features = [
+    "gccarch-znver4" # Replace "znver4" with your CPU architecture
+  ];
 }
