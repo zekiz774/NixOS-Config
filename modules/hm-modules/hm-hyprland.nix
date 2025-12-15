@@ -27,6 +27,7 @@ in {
       slurp
       libnotify
       jq
+      networkmanagerapplet
 
       (writeShellScriptBin "screenshot" ''
         #!/usr/bin/env sh
@@ -237,17 +238,18 @@ in {
 
     programs.waybar = {
       enable = true;
+      style = ../../configs/waybar.css;
       settings = {
         mainBar = {
           "layer" = "top";
           "position" = "bottom";
           "height" = 40;
-          "spacing" = 4;
+          "spacing" = 0;
 
           # 3. Define modules for the left, center, and right sections
           "modules-center" = ["clock"];
-          "modules-left" = ["hyprland/workspaces"]; # Added a clock for a basic working example
-          "modules-right" = ["tray" "pulseaudio" "network" "cpu" "memory" "battery"];
+          "modules-left" = ["hyprland/workspaces" "cpu" "custom/gpu-usage"]; # Added a clock for a basic working example
+          "modules-right" = ["pulseaudio" "network" "memory" "battery"];
 
           # 4. Minimal configuration for the hyprland/workspaces module
           "hyprland/workspaces" = {
@@ -255,26 +257,90 @@ in {
             # "format" = "{name}"; # Alternative: shows workspace names if you use named workspaces
             "on-click" = "activate"; # Allows clicking to switch workspaces
             "all-outputs" = true; # Show workspaces from all monitors
+            "format-icons" = {
+              "active" = " ";
+              "default" = " ";
+            };
           };
 
           # 5. Minimal configuration for the clock module (as an example)
           "clock" = {
-            "format" = " {:%H:%M}"; # Example:  14:30
+            "format" = "  {:%H:%M}"; # Example:  14:30
           };
 
           "network" = {
-            "format" = "{essid} {signal}%";
-            "format-alt" = "{ifname} {ipaddr}/{cidr}";
+            "format-wifi" = "󰤢 ";
+            "format-ethernet" = "󰈀 ";
+            "format-disconnected" = "󰤠 ";
+            "interval" = 5;
+            "tooltip-format" = "{essid} ({signalStrength}%)";
+            "on-click" = "nm-connection-editor";
+          };
 
+          "bluetooth" = {
+            "format" = "󰂲";
+            "format-on" = "{icon}";
+            "format-off" = "{icon}";
+            "format-connected" = "{icon}";
             "format-icons" = {
-              "wifi" = ["󰤨" "󰤥" "󰤢" "󰤟" "󰤯"];
-              "ethernet" = ["󰈁"];
-              "disconnected" = ["󰤭"];
+              "on" = "󰂯";
+              "off" = "󰂲";
+              "connected" = "󰂱";
             };
+            "on-click" = "blueman-manager";
+            "tooltip-format-connected" = "{device_enumerate}";
+          };
+
+          "pulseaudio" = {
+            "format" = "{icon} {volume}%";
+            "format-muted" = "";
+            "format-icons" = {
+              "default" = ["" " " " "];
+            };
+            "on-click" = "pavucontrol";
+          };
+
+          cpu = {
+            format = "  {icon} {usage:2}%";
+            format-icons = [
+              "▁"
+              "▂"
+              "▃"
+              "▄"
+              "▅"
+              "▆"
+              "▇"
+              "█"
+            ];
+            interval = 1;
+            on-click = "kitty -e btop";
+          };
+
+          "custom/gpu-usage" = {
+            "exec" = "cat /sys/class/hwmon/hwmon6/device/gpu_busy_percent";
+            "format" = "󰢮  {icon} {text}%";
+            "format-icons" = [
+              "▁"
+              "▂"
+              "▃"
+              "▄"
+              "▅"
+              "▆"
+              "▇"
+              "█"
+            ];
+            "return-type" = "";
+            "interval" = 1;
+          };
+
+          "memory" = {
+            "on-click" = "kitty -e btop";
+            "interval" = 30;
+            "format" = "  {used:0.1f}G/{total:0.1f}G";
+            "tooltip-format" = "Memory";
           };
         };
       };
     };
-    home.file.".config/waybar/style.css".source = ../../configs/waybar.css;
   };
 }
