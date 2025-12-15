@@ -82,34 +82,34 @@ in {
           globals.editorconfig = true;
           ui.colorizer.setupOpts.user_default_options.tailwind = true;
 
-          assistant.codecompanion-nvim = {
-            enable = true;
-            setupOpts = {
-              adapters = lib.mkLuaInline ''
-                {
-                  qwen3 = function()
-                    return require("codecompanion.adapters").extend("ollama", {
-                      name = "qwen3-coder",
-                      env = {
-                        url = "http://localhost:11434",
-                      },
-                      schema = {
-                        model = {
-                          default = 'qwen3-coder:30b'
-                        },
-                      },
-                    })
-                    end,
-                }
-              '';
-              strategies.chat.adapter = "qwen3";
-              strategies.inline.adapter = "qwen3";
-              display = {
-                action_pallete.provider = "telescope";
-                diff.provider = "mini_diff";
-              };
-            };
-          };
+          # assistant.codecompanion-nvim = {
+          #   enable = true;
+          #   setupOpts = {
+          #     adapters = lib.mkLuaInline ''
+          #       {
+          #         qwen3 = function()
+          #           return require("codecompanion.adapters").extend("ollama", {
+          #             name = "qwen3-coder",
+          #             env = {
+          #               url = "http://localhost:11434",
+          #             },
+          #             schema = {
+          #               model = {
+          #                 default = 'qwen3-coder:30b'
+          #               },
+          #             },
+          #           })
+          #           end,
+          #       }
+          #     '';
+          #     strategies.chat.adapter = "qwen3";
+          #     strategies.inline.adapter = "qwen3";
+          #     display = {
+          #       action_pallete.provider = "telescope";
+          #       diff.provider = "mini_diff";
+          #     };
+          #   };
+          # };
         };
       };
     };
