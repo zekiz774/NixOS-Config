@@ -248,7 +248,6 @@ in {
       style = ../../configs/waybar.css;
       settings = {
         mainBar = {
-          "layer" = "top";
           "position" = "bottom";
           "height" = 40;
           "spacing" = 0;

@@ -46,6 +46,7 @@
     wine
     winetricks
     yt-dlp
+    bun
   ];
 
   programs.kitty = {
