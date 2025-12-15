@@ -211,8 +211,8 @@ in {
       enable = true;
 
       theme = {
-        package = pkgs.flat-remix-gtk;
-        name = "Flat-Remix-GTK-Grey-Darkest";
+        name = "Adwaita-dark";
+        package = pkgs.gnome-themes-extra;
       };
 
       iconTheme = {
@@ -225,6 +225,13 @@ in {
         size = 11;
       };
     };
+
+    qt = {
+      enable = true;
+      platformTheme.name = "adwaita";
+      style.name = "Adwaita-dark";
+    };
+
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [xdg-desktop-portal-gtk xdg-desktop-portal-hyprland];
