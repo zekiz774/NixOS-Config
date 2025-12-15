@@ -47,9 +47,11 @@ in {
             };
             css.enable = true;
             ts.enable = true;
-            csharp.enable = true;
-            csharp.lsp.enable = true;
-            csharp.lsp.server = "omnisharp";
+            csharp = {
+              enable = true;
+              lsp.enable = true;
+            };
+
             markdown = {
               enable = true;
               extensions.render-markdown-nvim.enable = true;

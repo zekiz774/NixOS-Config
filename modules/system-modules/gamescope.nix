@@ -8,13 +8,13 @@
     hash = "sha256-ONjSInJ7M8niL5xWaNk5Z16ZMcM/A7M7bHTrgCFjrts=";
   };
 in {
-  nixpkgs.overlays = [
-    (final: prev: {
-      gamescope = prev.gamescope.overrideAttrs (old: {
-        patches = (old.patches or []) ++ [patch];
-      });
-    })
-  ];
+  #nixpkgs.overlays = [
+  #  (final: prev: {
+  #    gamescope = prev.gamescope.overrideAttrs (old: {
+  #      patches = (old.patches or []) ++ [patch];
+  #    });
+  #  })
+  #];
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "steamos-session-select" ''
       # Treat any "desktop" request as "logout to the greeter"
