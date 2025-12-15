@@ -162,7 +162,7 @@ in {
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
-          allow_tearing = false;
+          allow_tearing = true;
 
           layout = "dwindle";
         };
@@ -194,7 +194,7 @@ in {
         windowrule = [
           " match:class .*,suppress_event maximize"
           " match:class ^$,match:title ^$, match:xwayland 1, match:float 1, match:fullscreen_state_internal 2, match:pin 0, no_initial_focus on"
-          "fullscreen on, match:class ^(steam_app|heroic|lutris|bottles).*"
+          "fullscreen on, immediate yes, match:class ^(steam_app|heroic|lutris|bottles).*"
         ];
       };
     };

@@ -30,6 +30,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    preload-ng = {
+      url = "github:miguel-b-p/preload-ng";
+      inputs.preload-ngurl.follows = "nixpkgs";
+    };
   };
 
   outputs = {

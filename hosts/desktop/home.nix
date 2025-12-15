@@ -161,7 +161,7 @@
   localModules.hyprland = {
     enable = true;
     monitors = [
-      "DP-3, 1920x1080@144, auto, 1"
+      "DP-3, 1920x1080@144, auto, 1, vrr, 2"
       "HDMI-A-1, disable"
     ];
   };

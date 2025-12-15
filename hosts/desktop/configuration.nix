@@ -14,6 +14,7 @@ in {
     ../../modules/system-modules/gamescope.nix
     ../../modules/system-modules/nixconfig.nix
     ../../modules/system-modules/ly.nix
+    ../../common/configuration.nix
   ];
 
   # Bootloader.
