@@ -47,4 +47,21 @@
     winetricks
     yt-dlp
   ];
+
+  programs.kitty = {
+    enable = true;
+    settings = {
+      confirm_os_window_close = 0;
+
+      accent = "#fcf458";
+      warning = "#fc5876";
+      background = "#1b1d1e";
+      foreground = "#c5c5be";
+
+      color1 = "#fc5876";
+      color6 = "#a2a2a5";
+      color14 = "#615f5e";
+    };
+    themeFile = "Batman";
+  };
 }

@@ -323,5 +323,8 @@ in {
 
   # Disable the AT-SPI bus for all users
   systemd.user.services.at-spi-dbus-bus.enable = false;
+
   hardware.openrazer.enable = true;
+
+  # gpu stuff
 }

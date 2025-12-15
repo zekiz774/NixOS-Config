@@ -161,14 +161,14 @@ in {
         general = {
           gaps_in = 5;
           gaps_out = 10;
-          border_size = 1;
+          border_size = 2;
           allow_tearing = false;
 
           layout = "dwindle";
         };
 
         decoration = {
-          rounding = 10;
+          rounding = 5;
           rounding_power = 2;
 
           # Change transparency of focused and unfocused windows
@@ -183,12 +183,12 @@ in {
           };
 
           # https://wiki.hyprland.org/Configuring/Variables/#blur
-          blur = {
-            enabled = true;
-            size = 3;
-            passes = 2;
-            vibrancy = 0.1796;
-          };
+          #blur = {
+          #  enabled = true;
+          #  size = 3;
+          #  passes = 2;
+          #  vibrancy = 0.1796;
+          #};
         };
 
         windowrule = [
@@ -253,7 +253,7 @@ in {
 
           # 4. Minimal configuration for the hyprland/workspaces module
           "hyprland/workspaces" = {
-            "format" = "{icon}"; # Shows icons for workspaces (e.g., 1, 2, 3 or custom icons)
+            "format" = "{name}: {icon}"; # Shows icons for workspaces (e.g., 1, 2, 3 or custom icons)
             # "format" = "{name}"; # Alternative: shows workspace names if you use named workspaces
             "on-click" = "activate"; # Allows clicking to switch workspaces
             "all-outputs" = true; # Show workspaces from all monitors
