@@ -163,13 +163,14 @@ in {
           gaps_out = 10;
           border_size = 2;
           allow_tearing = true;
+          "col.active_border" = "rgba(fcf458ff)";
 
           layout = "dwindle";
         };
 
         decoration = {
           rounding = 5;
-          rounding_power = 2;
+          rounding_power = 5;
 
           # Change transparency of focused and unfocused windows
           active_opacity = 1.0;
