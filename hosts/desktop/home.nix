@@ -32,14 +32,15 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    androidStudioForPlatformPackages.canary
     blender-hip
     kdePackages.kdenlive
     nexusmods-app-unfree
     orca-slicer
     osu-lazer-bin
     prismlauncher
-    androidStudioForPlatformPackages.canary
     protonup-qt
+    spotify
 
     # Tools
     radeontop

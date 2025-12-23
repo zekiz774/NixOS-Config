@@ -21,7 +21,9 @@
     jetbrains.rider
 
     # tools
+    arrpc
     btop
+    bun
     devenv
     dmidecode
     ffmpeg
@@ -29,6 +31,7 @@
     imagemagick
     iw
     jq
+    libva-utils
     lm_sensors
     mprime
     nerd-fonts.jetbrains-mono
@@ -37,6 +40,7 @@
     powertop
     ripgrep
     rofi
+    socat
     steam-run
     tree
     unzip
@@ -46,7 +50,6 @@
     wine
     winetricks
     yt-dlp
-    bun
   ];
 
   programs.kitty = {
@@ -65,4 +68,6 @@
     };
     themeFile = "Batman";
   };
+
+  programs.vesktop.enable = true;
 }
