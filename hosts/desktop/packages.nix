@@ -1,22 +1,25 @@
 {pkgs, ...}:
 with pkgs; [
-  neovim
-  git
-  kitty
-  fish
-  zoxide
-  home-manager
   clinfo
-  mangohud
   efibootmgr
-  via
-  qmk
-  zsh
-  rsync
+  fish
+  git
+  home-manager
+  kitty
+  mangohud
+  neovim
   openrazer-daemon
   polychromatic
+  qmk
+  rsync
+  via
+  zoxide
+  zsh
 
-  libdrm
-  edid-decode
   drm_info
+  edid-decode
+  libdrm
+  rocmPackages.rocminfo
+  lshw
+  distrobox
 ]

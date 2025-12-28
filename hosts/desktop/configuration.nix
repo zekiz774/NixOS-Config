@@ -110,9 +110,14 @@ in {
   users.users.zekiz = {
     isNormalUser = true;
     description = "zekiz";
-    extraGroups = ["networkmanager" "wheel" "corectrl" "openrazer"];
-    packages = with pkgs; [
-      #  thunderbird
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "corectrl"
+      "openrazer"
+      "video"
+      "render"
+      "podman"
     ];
   };
 
@@ -230,27 +235,31 @@ in {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [rocmPackages.clr.icd rocmPackages.hiprt];
+    extraPackages = with pkgs; [
+      rocmPackages.hipblas
+      rocmPackages.hiprt
+    ];
   };
 
-  programs.alvr = {
-    enable = false;
-    openFirewall = true;
-  };
+  hardware.amdgpu.opencl.enable = true;
 
   systemd.tmpfiles.rules = let
     rocmEnv = pkgs.symlinkJoin {
       name = "rocm-combined";
       paths = with pkgs.rocmPackages; [
-        rocblas
         hipblas
-        clr
         hiprt
+        rocblas
       ];
     };
   in [
     "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
   ];
+
+  programs.alvr = {
+    enable = false;
+    openFirewall = true;
+  };
 
   services.sunshine = {
     enable = true;
@@ -327,5 +336,12 @@ in {
 
   hardware.openrazer.enable = true;
 
-  # gpu stuff
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enable = true;
+    };
+  };
 }
