@@ -37,4 +37,8 @@
       exePrefix = "/nix/store/;/run/current-system/;!/";
     };
   };
+
+  fonts.packages = with pkgs; [
+    google-fonts
+  ];
 }
