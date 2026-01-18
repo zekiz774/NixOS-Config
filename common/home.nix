@@ -18,10 +18,10 @@
     rofi
     tor-browser
     vesktop
-    jetbrains.rider
 
     # tools
     arrpc
+    bc
     btop
     bun
     devenv

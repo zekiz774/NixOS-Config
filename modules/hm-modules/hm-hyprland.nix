@@ -28,6 +28,7 @@ in {
       libnotify
       jq
       networkmanagerapplet
+      bc
 
       (writeShellScriptBin "screenshot" ''
         #!/usr/bin/env sh
@@ -168,6 +169,10 @@ in {
           layout = "dwindle";
         };
 
+        misc = {
+          vfr = true;
+        };
+
         decoration = {
           rounding = 5;
           rounding_power = 5;
@@ -177,10 +182,13 @@ in {
           inactive_opacity = 1.0;
 
           shadow = {
-            enabled = true;
+            enabled = false;
             range = 4;
             render_power = 3;
             color = "rgba(1a1a1aee)";
+          };
+          blur = {
+            enabled = false;
           };
 
           # https://wiki.hyprland.org/Configuring/Variables/#blur
@@ -324,7 +332,7 @@ in {
           };
 
           "custom/gpu-usage" = {
-            "exec" = "cat /sys/class/hwmon/hwmon6/device/gpu_busy_percent";
+            "exec" = "scale=1; minOut=0; maxOut=100; minIn=$(</sys/class/drm/card1/gt_min_freq_mhz); maxIn=$(</sys/class/drm/card1/gt_max_freq_mhz); v=$(</sys/class/drm/card1/gt_cur_freq_mhz); echo \"$minOut+($v-$minIn)*($maxOut-$minOut)/($maxIn-$minIn)\" | bc";
             "format" = "󰢮  {icon} {text}%";
             "format-icons" = [
               "▁"
